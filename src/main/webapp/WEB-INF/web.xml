@@ -13,4 +13,14 @@
         <servlet-name>Hello</servlet-name>
         <url-pattern>/hello</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Homework</servlet-name>
+        <servlet-class>org.example.controllers.homeworks.hw_24_11_24.HomeworkServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Homework</servlet-name>
+        <url-pattern>/homework</url-pattern>
+    </servlet-mapping>
 </web-app>
