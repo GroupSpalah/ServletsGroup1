@@ -1,0 +1,4 @@
+1) Создать приложение калькулятор(+, *, -, /).
+   Использовать методы doPost(use json) и  doGet, отправлять два числа и знак.(%2b for "+")
+
+2) Notebook(save, get by id, delete by id, findAll)
