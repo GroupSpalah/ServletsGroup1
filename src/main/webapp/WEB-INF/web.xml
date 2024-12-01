@@ -15,6 +15,16 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>Homework</servlet-name>
+        <servlet-class>org.example.controllers.homeworks.hw_24_11_24.HomeworkServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Homework</servlet-name>
+        <url-pattern>/homework</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>Params</servlet-name>
         <servlet-class>org.example.controllers.ParamsServlet</servlet-class>
     </servlet>
