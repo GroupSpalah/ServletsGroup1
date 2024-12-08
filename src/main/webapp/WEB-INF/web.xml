@@ -1,18 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <web-app version="4.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
    http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
-
-    <servlet>
-        <servlet-name>Hello</servlet-name>
-        <servlet-class>org.example.controllers.HelloServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>Hello</servlet-name>
-        <url-pattern>/hello</url-pattern>
-    </servlet-mapping>
 
     <servlet>
         <servlet-name>Homework</servlet-name>
@@ -25,6 +14,16 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>Hello</servlet-name>
+        <servlet-class>org.example.controllers.HelloServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Hello</servlet-name>
+        <url-pattern>/hello</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>Params</servlet-name>
         <servlet-class>org.example.controllers.ParamsServlet</servlet-class>
     </servlet>
@@ -33,4 +32,5 @@
         <servlet-name>Params</servlet-name>
         <url-pattern>/params</url-pattern>
     </servlet-mapping>
+
 </web-app>
