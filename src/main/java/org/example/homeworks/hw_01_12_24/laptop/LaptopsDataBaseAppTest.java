@@ -1,10 +1,10 @@
-package org.example.controllers.homeworks.hw_01_12_24.laptop;
+package org.example.homeworks.hw_01_12_24.laptop;
 
 import org.bson.types.ObjectId;
-import org.example.controllers.homeworks.hw_01_12_24.laptop.domain.LaptopDocument;
-import org.example.controllers.homeworks.hw_01_12_24.laptop.json.LaptopJSON;
-import org.example.controllers.homeworks.hw_01_12_24.laptop.service.LaptopService;
-import org.example.controllers.homeworks.hw_01_12_24.laptop.service.impl.LaptopServiceImpl;
+import org.example.homeworks.hw_01_12_24.laptop.domain.LaptopDocument;
+import org.example.homeworks.hw_01_12_24.laptop.controller.LaptopServlet;
+import org.example.homeworks.hw_01_12_24.laptop.service.LaptopService;
+import org.example.homeworks.hw_01_12_24.laptop.service.impl.LaptopServiceImpl;
 
 import java.time.LocalDate;
 
@@ -71,7 +71,7 @@ public class LaptopsDataBaseAppTest {
         //laptopServiceMongoDB.filterByTwoParam("model", "ramCapacity", "Yoga Slim 20", 32);//++
         //laptopServiceMongoDB.update(newLenovoD);//++
 
-        LaptopJSON laptopJSON = new LaptopJSON();
+        LaptopServlet laptopJSON = new LaptopServlet();
 
 
 

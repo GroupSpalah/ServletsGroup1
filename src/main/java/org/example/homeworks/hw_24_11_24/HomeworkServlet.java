@@ -1,4 +1,4 @@
-package org.example.controllers.homeworks.hw_24_11_24;
+package org.example.homeworks.hw_24_11_24;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;

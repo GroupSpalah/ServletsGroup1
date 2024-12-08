@@ -1,4 +1,4 @@
-package org.example.controllers.homeworks.hw_01_12_24.laptop.domain;
+package org.example.homeworks.hw_01_12_24.laptop.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,12 +1,12 @@
-package org.example.controllers.homeworks.hw_01_12_24.laptop.service.impl;
+package org.example.homeworks.hw_01_12_24.laptop.service.impl;
 
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.bson.types.ObjectId;
-import org.example.controllers.homeworks.hw_01_12_24.laptop.dao.LaptopDao;
-import org.example.controllers.homeworks.hw_01_12_24.laptop.dao.mongoDbDAOimpl.LaptopDaoImpl;
-import org.example.controllers.homeworks.hw_01_12_24.laptop.domain.LaptopDocument;
-import org.example.controllers.homeworks.hw_01_12_24.laptop.service.LaptopService;
+import org.example.homeworks.hw_01_12_24.laptop.dao.LaptopDao;
+import org.example.homeworks.hw_01_12_24.laptop.dao.impl.LaptopDaoImpl;
+import org.example.homeworks.hw_01_12_24.laptop.domain.LaptopDocument;
+import org.example.homeworks.hw_01_12_24.laptop.service.LaptopService;
 
 import java.time.LocalDate;
 import java.util.List;

@@ -1,4 +1,4 @@
-package org.example.controllers.homeworks.hw_01_12_24.laptop.mongo_config;
+package org.example.homeworks.hw_01_12_24.laptop.mongo_config;
 
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;

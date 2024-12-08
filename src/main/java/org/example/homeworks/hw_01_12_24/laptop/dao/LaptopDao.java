@@ -1,7 +1,7 @@
-package org.example.controllers.homeworks.hw_01_12_24.laptop.dao;
+package org.example.homeworks.hw_01_12_24.laptop.dao;
 
 import org.bson.types.ObjectId;
-import org.example.controllers.homeworks.hw_01_12_24.laptop.domain.LaptopDocument;
+import org.example.homeworks.hw_01_12_24.laptop.domain.LaptopDocument;
 
 import java.time.LocalDate;
 import java.util.List;

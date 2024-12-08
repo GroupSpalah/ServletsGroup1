@@ -1,4 +1,4 @@
-package org.example.controllers.homeworks.hw_01_12_24.laptop.util;
+package org.example.homeworks.hw_01_12_24.laptop.util;
 
 public class ConstantsUtil {
 

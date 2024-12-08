@@ -1,18 +1,18 @@
-package org.example.controllers.homeworks.hw_01_12_24.laptop.dao.mongoDbDAOimpl;
+package org.example.homeworks.hw_01_12_24.laptop.dao.impl;
 
 import com.mongodb.client.*;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.result.InsertOneResult;
 import org.bson.types.ObjectId;
-import org.example.controllers.homeworks.hw_01_12_24.laptop.dao.LaptopDao;
-import org.example.controllers.homeworks.hw_01_12_24.laptop.domain.LaptopDocument;
+import org.example.homeworks.hw_01_12_24.laptop.dao.LaptopDao;
+import org.example.homeworks.hw_01_12_24.laptop.domain.LaptopDocument;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.example.controllers.homeworks.hw_01_12_24.laptop.mongo_config.MongoClientManager.getMongoClient;
-import static org.example.controllers.homeworks.hw_01_12_24.laptop.util.ConstantsUtil.*;
+import static org.example.homeworks.hw_01_12_24.laptop.mongo_config.MongoClientManager.getMongoClient;
+import static org.example.homeworks.hw_01_12_24.laptop.util.ConstantsUtil.*;
 
 public class LaptopDaoImpl implements LaptopDao {
 

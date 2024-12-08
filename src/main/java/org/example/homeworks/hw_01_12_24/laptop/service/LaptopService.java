@@ -1,4 +1,4 @@
-package org.example.controllers.homeworks.hw_01_12_24.laptop.service;
+package org.example.homeworks.hw_01_12_24.laptop.service;
 
 import java.time.LocalDate;
 import java.util.List;
