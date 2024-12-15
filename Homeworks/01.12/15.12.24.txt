@@ -1,0 +1,3 @@
+1) Даны два домена Truck(id, model, modelYear) и Driver(id, firstName, Phone(class),
+lastName, age, qualification(Enum), List<Truck>).
+   Создать OneToMany отношение, а также CRUD(findAll) операции.
