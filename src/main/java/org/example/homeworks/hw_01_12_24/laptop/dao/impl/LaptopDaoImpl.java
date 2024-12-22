@@ -55,12 +55,6 @@ public class LaptopDaoImpl implements LaptopDao {
     public List<LaptopDocument> filterByTwoParam(String firstParam, String secondParam, Object firstValue, Object secondValue) {
         List<LaptopDocument> laptops = new ArrayList<>();
 
-        // фильтрует только по двум параметрам:
-        //laptopsCollection
-        //        .find(Filters.and(Filters.eq(firstParam, firstValue), Filters.eq(secondParam, secondValue)))
-        //        .forEach(System.out::println);//++
-
-        // фильтрует по первому, второму, или сразу двум параметрам:
         laptopsCollection
                 .find(Filters.or(Filters.eq(firstParam, firstValue), Filters.eq(secondParam, secondValue)))
                 .forEach(laptops::add);
