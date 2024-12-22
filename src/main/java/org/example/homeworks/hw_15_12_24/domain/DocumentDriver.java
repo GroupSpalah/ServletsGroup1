@@ -63,7 +63,9 @@ public class DocumentDriver {
     int age;
     Qualification qualification;
     Phone phone;
+
     List<DocumentTruck> truckList;
+
 
     @Override
     public String toString() {
