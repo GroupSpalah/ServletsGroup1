@@ -1,12 +1,12 @@
-package org.example.controllers.homeworks.hw_01_12_24.laptop.service.impl;
+package org.example.homeworks.hw_01_12_24.laptop.service.impl;
 
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.bson.types.ObjectId;
-import org.example.controllers.homeworks.hw_01_12_24.laptop.dao.LaptopDao;
-import org.example.controllers.homeworks.hw_01_12_24.laptop.dao.mongoDbDAOimpl.LaptopDaoImpl;
-import org.example.controllers.homeworks.hw_01_12_24.laptop.domain.LaptopDocument;
-import org.example.controllers.homeworks.hw_01_12_24.laptop.service.LaptopService;
+import org.example.homeworks.hw_01_12_24.laptop.dao.LaptopDao;
+import org.example.homeworks.hw_01_12_24.laptop.dao.impl.LaptopDaoImpl;
+import org.example.homeworks.hw_01_12_24.laptop.domain.LaptopDocument;
+import org.example.homeworks.hw_01_12_24.laptop.service.LaptopService;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -21,7 +21,7 @@ public class LaptopServiceImpl implements LaptopService<LaptopDocument, ObjectId
         LAPTOP_DAO.addLaptop(laptop);
     }
 
-    public LaptopDocument findById(ObjectId id) {
+    public LaptopDocument findById(String id) {
         return LAPTOP_DAO.findById(id);
     }
 
@@ -29,21 +29,25 @@ public class LaptopServiceImpl implements LaptopService<LaptopDocument, ObjectId
         LAPTOP_DAO.printAllLaptop();
     }
 
-    public void filterByReleaseDate(LocalDate date) {
-        LAPTOP_DAO.filterByReleaseDate(date);
+    public List<LaptopDocument> filterByReleaseDate(LocalDate date) {
+        return LAPTOP_DAO.filterByReleaseDate(date);
     }
 
-    public void filterByTwoParam(String firstParam, String secondParam,
+    public List<LaptopDocument> filterByDateManufacturerDateGraterThan(LocalDate date) {
+        return LAPTOP_DAO.filterByDateManufacturerDateGraterThan(date);
+    }
+
+    public List<LaptopDocument> filterByTwoParam(String firstParam, String secondParam,
                                  Object firstValue, Object secondValue) {
-        LAPTOP_DAO.filterByTwoParam(firstParam, secondParam, firstValue, secondValue);
+        return LAPTOP_DAO.filterByTwoParam(firstParam, secondParam, firstValue, secondValue);
     }
 
-    public void filterByModel(String value) {
-        LAPTOP_DAO.filterByModel(value);
+    public List<LaptopDocument> filterByModel(String value) {
+        return LAPTOP_DAO.filterByModel(value);
     }
 
-    public void filerByProcessor(String value) {
-        LAPTOP_DAO.filerByProcessor(value);
+    public List<LaptopDocument> filerByProcessor(String value) {
+        return LAPTOP_DAO.filerByProcessor(value);
     }
 
     @Override

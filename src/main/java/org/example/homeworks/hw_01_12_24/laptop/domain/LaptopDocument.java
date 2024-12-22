@@ -1,11 +1,12 @@
-package org.example.controllers.homeworks.hw_01_12_24.laptop.domain;
+package org.example.homeworks.hw_01_12_24.laptop.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.bson.types.ObjectId;
 import org.bson.codecs.pojo.annotations.BsonId;
+import org.bson.types.ObjectId;
 
 import java.time.LocalDate;
 
@@ -19,6 +20,8 @@ public class LaptopDocument {
     private ObjectId id;
     private String model;
     private String manufacturer;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate releaseDate;
     private int ramCapacity;
     private int ssdCapacity;

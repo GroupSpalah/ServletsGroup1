@@ -1,4 +1,4 @@
-package org.example.controllers.homeworks.hw_01_12_24.laptop.service;
+package org.example.homeworks.hw_01_12_24.laptop.service;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -6,18 +6,20 @@ import java.util.List;
 public interface LaptopService<T, ID> {
     void addLaptop(T laptop);
 
-    T findById(ID id);
+    T findById(String id);
 
     void printAllLaptop();
 
-    void filterByReleaseDate(LocalDate date);
+    List<T> filterByReleaseDate(LocalDate date);
 
-    void filterByTwoParam(String firstParam, String secondParam,
+    List<T> filterByDateManufacturerDateGraterThan(LocalDate date);
+
+    List<T> filterByTwoParam(String firstParam, String secondParam,
                           Object firstValue, Object secondValue);
 
-    void filterByModel(String value);
+    List<T> filterByModel(String value);
 
-    void filerByProcessor(String value);
+    List<T> filerByProcessor(String value);
 
     void deleteById(String value);
 

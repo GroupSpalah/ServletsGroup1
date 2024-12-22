@@ -1,10 +1,9 @@
-package org.example.controllers.homeworks.hw_01_12_24.laptop;
+package org.example.homeworks.hw_01_12_24.laptop;
 
 import org.bson.types.ObjectId;
-import org.example.controllers.homeworks.hw_01_12_24.laptop.domain.LaptopDocument;
-import org.example.controllers.homeworks.hw_01_12_24.laptop.json.LaptopJSON;
-import org.example.controllers.homeworks.hw_01_12_24.laptop.service.LaptopService;
-import org.example.controllers.homeworks.hw_01_12_24.laptop.service.impl.LaptopServiceImpl;
+import org.example.homeworks.hw_01_12_24.laptop.domain.LaptopDocument;
+import org.example.homeworks.hw_01_12_24.laptop.service.LaptopService;
+import org.example.homeworks.hw_01_12_24.laptop.service.impl.LaptopServiceImpl;
 
 import java.time.LocalDate;
 
@@ -62,7 +61,8 @@ public class LaptopsDataBaseAppTest {
 
         LaptopService<LaptopDocument, ObjectId> laptopServiceMongoDB = new LaptopServiceImpl();
 
-        laptopServiceMongoDB.printAllLaptop();//++
+        //laptopServiceMongoDB.printAllLaptop();//++
+        System.out.println(laptopServiceMongoDB.filterByDateManufacturerDateGraterThan(LocalDate.of(2025, 4, 10)));
         //laptopServiceMongoDB.addLaptop(newLenovoD);//++
         //System.out.println(laptopServiceMongoDB.findById(objectId));
         //laptopServiceMongoDB.filerByProcessor("Intel Core i5-1585G9");//++
@@ -70,9 +70,6 @@ public class LaptopsDataBaseAppTest {
         //laptopServiceMongoDB.filterByReleaseDate(LocalDate.of(2025, 4, 20));//++
         //laptopServiceMongoDB.filterByTwoParam("model", "ramCapacity", "Yoga Slim 20", 32);//++
         //laptopServiceMongoDB.update(newLenovoD);//++
-
-        LaptopJSON laptopJSON = new LaptopJSON();
-
 
 
     }

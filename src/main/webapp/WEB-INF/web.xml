@@ -5,7 +5,7 @@
 
     <servlet>
         <servlet-name>Homework</servlet-name>
-        <servlet-class>org.example.controllers.homeworks.hw_24_11_24.HomeworkServlet</servlet-class>
+        <servlet-class>org.example.homeworks.hw_24_11_24.HomeworkServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>

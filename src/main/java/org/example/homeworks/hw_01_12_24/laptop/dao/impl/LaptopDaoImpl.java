@@ -1,18 +1,19 @@
-package org.example.controllers.homeworks.hw_01_12_24.laptop.dao.mongoDbDAOimpl;
+package org.example.homeworks.hw_01_12_24.laptop.dao.impl;
 
-import com.mongodb.client.*;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.result.InsertOneResult;
 import org.bson.types.ObjectId;
-import org.example.controllers.homeworks.hw_01_12_24.laptop.dao.LaptopDao;
-import org.example.controllers.homeworks.hw_01_12_24.laptop.domain.LaptopDocument;
+import org.example.homeworks.hw_01_12_24.laptop.dao.LaptopDao;
+import org.example.homeworks.hw_01_12_24.laptop.domain.LaptopDocument;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.example.controllers.homeworks.hw_01_12_24.laptop.mongo_config.MongoClientManager.getMongoClient;
-import static org.example.controllers.homeworks.hw_01_12_24.laptop.util.ConstantsUtil.*;
+import static org.example.homeworks.hw_01_12_24.laptop.mongo_config.MongoClientManager.getMongoClient;
+import static org.example.homeworks.hw_01_12_24.laptop.util.ConstantsUtil.*;
 
 public class LaptopDaoImpl implements LaptopDao {
 
@@ -30,8 +31,11 @@ public class LaptopDaoImpl implements LaptopDao {
     }
 
     @Override
-    public LaptopDocument findById(ObjectId id) {
-        return laptopsCollection.find(Filters.eq("_id", id)).first();
+    public LaptopDocument findById(String value) {
+
+        ObjectId id = new ObjectId(value);
+
+        return laptopsCollection.find(Filters.eq(ID, id)).first();
     }
 
     @Override
@@ -43,12 +47,14 @@ public class LaptopDaoImpl implements LaptopDao {
     }
 
     @Override
-    public void filterByReleaseDate(LocalDate date) {
-        filterByParam(RELEASE_DATE_JAVA, date);
+    public List<LaptopDocument> filterByReleaseDate(LocalDate date) {
+        return filterByParam(RELEASE_DATE_JAVA, date);
     }
 
     @Override
-    public void filterByTwoParam(String firstParam, String secondParam, Object firstValue, Object secondValue) {
+    public List<LaptopDocument> filterByTwoParam(String firstParam, String secondParam, Object firstValue, Object secondValue) {
+        List<LaptopDocument> laptops = new ArrayList<>();
+
         // фильтрует только по двум параметрам:
         //laptopsCollection
         //        .find(Filters.and(Filters.eq(firstParam, firstValue), Filters.eq(secondParam, secondValue)))
@@ -57,23 +63,41 @@ public class LaptopDaoImpl implements LaptopDao {
         // фильтрует по первому, второму, или сразу двум параметрам:
         laptopsCollection
                 .find(Filters.or(Filters.eq(firstParam, firstValue), Filters.eq(secondParam, secondValue)))
-                .forEach(System.out::println);
+                .forEach(laptops::add);
+
+        return laptops;
     }
 
     @Override
-    public void filterByModel(String value) {
-        filterByParam(MODEL, value);
+    public List<LaptopDocument> filterByModel(String value) {
+        return filterByParam(MODEL, value);
     }
 
     @Override
-    public void filerByProcessor(String value) {
-        filterByParam(PROCESSOR, value);
+    public List<LaptopDocument> filerByProcessor(String value) {
+        return filterByParam(PROCESSOR, value);
     }
 
-    private void filterByParam(String param, Object value) {
+    private List<LaptopDocument> filterByParam(String param, Object value) {
+        List<LaptopDocument> allLaptop = new ArrayList<>();
+
         laptopsCollection
                 .find(Filters.eq(param, value))
-                .forEach(System.out::println);
+                .forEach(allLaptop::add);
+
+        return allLaptop;
+    }
+
+    @Override
+    public List<LaptopDocument> filterByDateManufacturerDateGraterThan(LocalDate date) {
+
+        List<LaptopDocument> filteredLaptops = new ArrayList<>();
+
+        laptopsCollection
+                .find(Filters.gte(RELEASE_DATE_JAVA, date))
+                .forEach(filteredLaptops::add);
+
+        return filteredLaptops;
     }
 
     @Override
@@ -86,9 +110,12 @@ public class LaptopDaoImpl implements LaptopDao {
 
     @Override
     public void deleteById(String value) {
+
+        ObjectId id = new ObjectId(value);
+
         laptopsCollection
                 .deleteOne(
-                        Filters.eq(ID, value)
+                        Filters.eq(ID, id)
                 );
     }
 
