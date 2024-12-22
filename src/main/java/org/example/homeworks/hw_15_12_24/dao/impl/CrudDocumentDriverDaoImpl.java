@@ -2,14 +2,16 @@ package org.example.homeworks.hw_15_12_24.dao.impl;
 
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
 import com.mongodb.client.result.InsertOneResult;
-import org.example.homeworks.hw_01_12_24.laptop.domain.LaptopDocument;
+import org.bson.types.ObjectId;
 import org.example.homeworks.hw_15_12_24.dao.CrudDao;
 import org.example.homeworks.hw_15_12_24.domain.DocumentDriver;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.example.homeworks.hw_01_12_24.laptop.util.ConstantsUtil.ID;
 import static org.example.homeworks.hw_15_12_24.mongo_config.MongoClientManager.getMongoClient;
 import static org.example.homeworks.hw_15_12_24.util.ConstantsUtil.*;
 
@@ -31,12 +33,20 @@ public class CrudDocumentDriverDaoImpl implements CrudDao<DocumentDriver> {
 
     @Override
     public void update(DocumentDriver driver) {
-
+        drivesCollection
+                .replaceOne(Filters.eq(ID, driver.getId())
+                        , driver);
     }
 
     @Override
-    public void deleteById(int id) {
+    public void deleteById(String value) {
 
+        ObjectId id = new ObjectId(value);
+
+        drivesCollection
+                .deleteOne(
+                        Filters.eq(ID, id)
+                );
     }
 
     @Override
@@ -48,7 +58,10 @@ public class CrudDocumentDriverDaoImpl implements CrudDao<DocumentDriver> {
     }
 
     @Override
-    public DocumentDriver getById(int id) {
-        return null;
+    public DocumentDriver getById(String value) {
+
+        ObjectId id = new ObjectId(value);
+
+        return drivesCollection.find(Filters.eq(ID, id)).first();
     }
 }

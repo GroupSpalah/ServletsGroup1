@@ -4,7 +4,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.homeworks.hw_01_12_24.laptop.domain.LaptopDocument;
+import org.bson.types.ObjectId;
 import org.example.homeworks.hw_15_12_24.dao.CrudDao;
 import org.example.homeworks.hw_15_12_24.dao.impl.CrudDocumentDriverDaoImpl;
 import org.example.homeworks.hw_15_12_24.domain.DocumentDriver;
@@ -19,18 +19,17 @@ import static org.example.homeworks.hw_01_12_24.config.ObjectMapperProvider.OBJE
 @WebServlet(urlPatterns = "/driverServlet/*")
 public class DriverServlet extends HttpServlet {
 
-    private static final CrudDao<DocumentDriver> DRIVER_DAO = new CrudDocumentDriverDaoImpl();
-    //добавить сервисный слой
+    private static final CrudDao<DocumentDriver> DRIVER_SERVICE = new CrudDocumentDriverDaoImpl();
 
-    //update ++
+    //update ??
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
         BufferedReader reqReader = req.getReader();//id != 0
 
-        LaptopDocument laptopDocument = OBJECT_MAPPER.readValue(reqReader, LaptopDocument.class);
+        DocumentDriver documentDriver = OBJECT_MAPPER.readValue(reqReader, DocumentDriver.class);
 
-        //DRIVER_DAO.update(laptopDocument);
+        DRIVER_SERVICE.update(documentDriver);
 
         // Відправка відповіді клієнту
         resp.setStatus(HttpServletResponse.SC_OK);
@@ -42,7 +41,7 @@ public class DriverServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
-        List<DocumentDriver> allDrivers = DRIVER_DAO.getAll();
+        List<DocumentDriver> allDrivers = DRIVER_SERVICE.getAll();
 
         PrintWriter writer = resp.getWriter();
 
@@ -52,22 +51,40 @@ public class DriverServlet extends HttpServlet {
     //save ++
     /**
      * {
-     * "model": "Yoga Slim 30",
-     * "manufacturer": "Lenovo",
-     * "releaseDate": "2025-05-20",
-     * "ramCapacity": "64",
-     * "ssdCapacity": "2048",
-     * "processor": "Intel Core i7-15999"
-     * }
-     */
+     *   "age": 18,
+     *   "firstName": "John",
+     *   "lastName": "Doe Junior",
+     *   "phone": {
+     *     "number": 987654321
+     *   },
+     *   "qualification": "LOW",
+     *   "truckList": [
+     *     {
+     *       "model": "Mersedes",
+     *       "modelYear": "2020-10-10"
+     *     },
+     *     {
+     *       "model": "Mitsubishi Lancer",
+     *       "modelYear": "2018-07-20"
+     *     },
+     *     {
+     *       "model": "BMW X6",
+     *       "modelYear": "2019-03-28"
+     *     }
+     *   ]
+     * }*/
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
         BufferedReader reqReader = req.getReader();//id = 0
 
-        LaptopDocument laptopDocument = OBJECT_MAPPER.readValue(reqReader, LaptopDocument.class);
+        DocumentDriver documentDriver = OBJECT_MAPPER.readValue(reqReader, DocumentDriver.class);
 
-        //DRIVER_DAO.addLaptop(laptopDocument);
+        documentDriver
+                .getTruckList()
+                .forEach(documentTruck -> documentTruck.setId(new ObjectId()));
+
+        DRIVER_SERVICE.add(documentDriver);
 
         resp.setStatus(HttpServletResponse.SC_OK);
         resp.getWriter().write("Laptop added successfully");
@@ -81,6 +98,6 @@ public class DriverServlet extends HttpServlet {
 
         String id = pathInfo.substring(1);
 
-        //DRIVER_DAO.deleteById(id);
+        DRIVER_SERVICE.deleteById(id);
     }
 }

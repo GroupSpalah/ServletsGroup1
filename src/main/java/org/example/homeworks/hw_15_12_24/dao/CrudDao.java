@@ -7,9 +7,9 @@ public interface CrudDao<T> {
 
     void update(T t);
 
-    void deleteById(int id);
+    void deleteById(String value);
 
     List<T> getAll();
 
-    T getById(int id);
+    T getById(String value);
 }

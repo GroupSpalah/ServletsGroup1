@@ -67,7 +67,7 @@ public class DocumentDriver {
 
     @Override
     public String toString() {
-        return "Driver " + id + " {" +
+        return "\nDriver: {" +
                 " id = " + id +
                 "| firstName = '" + firstName + '\'' +
                 "| lastName = '" + lastName + '\'' +

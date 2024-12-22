@@ -16,7 +16,7 @@ import java.time.LocalDate;
 public class DocumentTruck {
 
     @BsonId
-    ObjectId id;
+    ObjectId id = new ObjectId();
     String model;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
@@ -24,7 +24,7 @@ public class DocumentTruck {
 
     @Override
     public String toString() {
-        return "\nTruck " + id + " {" +
+        return "\nTruck: {" +
                 " id = " + id + " |" +
                 " model = '" + model + '\'' + "|" +
                 " modelYear = " + modelYear +
