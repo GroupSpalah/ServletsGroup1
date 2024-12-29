@@ -21,6 +21,8 @@ public interface LaptopService<T, ID> {
 
     List<T> filerByProcessor(String value);
 
+    List<T> filerByRam(int value);
+
     void deleteById(String value);
 
     void deleteByProcessor(String value);

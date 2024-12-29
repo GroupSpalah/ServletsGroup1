@@ -50,6 +50,10 @@ public class LaptopServiceImpl implements LaptopService<LaptopDocument, ObjectId
         return LAPTOP_DAO.filerByProcessor(value);
     }
 
+    public List<LaptopDocument> filerByRam(int value) {
+        return LAPTOP_DAO.filerByRam(value);
+    }
+
     @Override
     public void deleteById(String value) {
         LAPTOP_DAO.deleteById(value);

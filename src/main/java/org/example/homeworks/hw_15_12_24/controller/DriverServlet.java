@@ -28,6 +28,7 @@ public class DriverServlet extends HttpServlet {
         BufferedReader reqReader = req.getReader();//id != 0
 
         DocumentDriver documentDriver = OBJECT_MAPPER.readValue(reqReader, DocumentDriver.class);
+        // подумать как лучше обновить авто у определенного водителя?
 
         DRIVER_SERVICE.update(documentDriver);
 

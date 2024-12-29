@@ -10,4 +10,9 @@ public class ConstantsUtil {
     public static final String MODEL = "model";
     public static final String DATABASE_NAME = "LaptopDB";
     public static final String COLLECTION_NAME = "laptopsCollection";
+
+    //command url patterns:
+    public static final String FRONT_CONTROLLER_SERVLET = "/laptopServlet";
+    public static final String FRONT_CONTROLLER_SERVLET_ALL_VARIATION = "/laptopServlet/*";
+    public static final String FIND_LAPTOP_BY_RAM = "/getByRam";
 }

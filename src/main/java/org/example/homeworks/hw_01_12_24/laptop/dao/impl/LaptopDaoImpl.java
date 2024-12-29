@@ -72,6 +72,11 @@ public class LaptopDaoImpl implements LaptopDao {
         return filterByParam(PROCESSOR, value);
     }
 
+    @Override
+    public List<LaptopDocument> filerByRam(int value) {
+        return filterByParam(RAM_CAPACITY_JAVA, value);
+    }
+
     private List<LaptopDocument> filterByParam(String param, Object value) {
         List<LaptopDocument> allLaptop = new ArrayList<>();
 

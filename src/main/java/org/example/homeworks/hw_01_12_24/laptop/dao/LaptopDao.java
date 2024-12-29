@@ -22,6 +22,8 @@ public interface LaptopDao {
 
     List<LaptopDocument> filerByProcessor(String value);
 
+    List<LaptopDocument> filerByRam(int value);
+
     List<LaptopDocument> filterByDateManufacturerDateGraterThan(LocalDate date);
 
     void deleteById(String value);

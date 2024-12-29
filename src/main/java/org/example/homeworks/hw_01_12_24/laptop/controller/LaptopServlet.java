@@ -15,8 +15,10 @@ import java.io.PrintWriter;
 import java.util.List;
 
 import static org.example.homeworks.hw_01_12_24.config.ObjectMapperProvider.OBJECT_MAPPER;
+import static org.example.homeworks.hw_01_12_24.laptop.util.ConstantsUtil.*;
+import static org.example.homeworks.hw_01_12_24.laptop.util.UtilData.COMMANDS_MAP;
 
-@WebServlet(urlPatterns = "/laptopServlet/*")
+@WebServlet(urlPatterns = FRONT_CONTROLLER_SERVLET_ALL_VARIATION)
 public class LaptopServlet extends HttpServlet {
 
     private static final LaptopService<LaptopDocument, ObjectId> LAPTOP_SERVICE = new LaptopServiceImpl();
@@ -41,11 +43,13 @@ public class LaptopServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
-        List<LaptopDocument> allLaptop = LAPTOP_SERVICE.getAllLaptop();
+        commandProcess(req, resp);
+
+/*        List<LaptopDocument> allLaptop = LAPTOP_SERVICE.getAllLaptop();
 
         PrintWriter writer = resp.getWriter();
 
-        writer.println(allLaptop);
+        writer.println(allLaptop);*/
     }
 
     //save ++
@@ -81,5 +85,16 @@ public class LaptopServlet extends HttpServlet {
         String id = pathInfo.substring(1);
 
         LAPTOP_SERVICE.deleteById(id);
+    }
+
+    //используется в этом же классе, можно пока что не использовать
+    private void commandProcess(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String commandURL = request.getRequestURI()
+                .replaceAll(".*" + FRONT_CONTROLLER_SERVLET, "")//localhost:9999/laptopServlet/getByRam/16
+                .replaceAll("\\d+", "");// getByRam/16
+
+        Command command = COMMANDS_MAP.get(commandURL);//FindByRamNewCommand
+
+        command.process(request, response);
     }
 }
