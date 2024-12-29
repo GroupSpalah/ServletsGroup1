@@ -87,7 +87,6 @@ public class LaptopServlet extends HttpServlet {
         LAPTOP_SERVICE.deleteById(id);
     }
 
-    //используется в этом же классе, можно пока что не использовать
     private void commandProcess(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String commandURL = request.getRequestURI()
                 .replaceAll(".*" + FRONT_CONTROLLER_SERVLET, "")//localhost:9999/laptopServlet/getByRam/16
