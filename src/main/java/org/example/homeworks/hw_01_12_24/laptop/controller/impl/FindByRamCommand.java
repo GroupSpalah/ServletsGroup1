@@ -10,6 +10,8 @@ import org.example.homeworks.hw_01_12_24.laptop.service.LaptopService;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import static org.example.homeworks.hw_01_12_24.laptop.util.ConstantsUtil.RAM_CAPACITY_JAVA;
+
 public class FindByRamCommand implements Command {
 
     private static LaptopService<LaptopDocument, ObjectId> LAPTOP_SERVICE;
@@ -21,9 +23,7 @@ public class FindByRamCommand implements Command {
     @Override
     public void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-        String pathInfo = request.getPathInfo();
-
-        String ramCapacity = pathInfo.substring(1);//?
+        String ramCapacity = request.getParameter(RAM_CAPACITY_JAVA);
 
         int ram = Integer.parseInt(ramCapacity);
 
