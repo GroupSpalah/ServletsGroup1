@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+//http://localhost:9999/laptopServlet
+//++
 public class GetAllLaptopCommand implements Command {
 
     private static LaptopService<LaptopDocument, ObjectId> LAPTOP_SERVICE;

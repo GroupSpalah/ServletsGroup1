@@ -42,14 +42,8 @@ public class LaptopServlet extends HttpServlet {
     //findAll ++
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-
+        //use pattern Command & FrontController for doGet
         commandProcess(req, resp);
-
-/*        List<LaptopDocument> allLaptop = LAPTOP_SERVICE.getAllLaptop();
-
-        PrintWriter writer = resp.getWriter();
-
-        writer.println(allLaptop);*/
     }
 
     //save ++
@@ -88,11 +82,12 @@ public class LaptopServlet extends HttpServlet {
     }
 
     private void commandProcess(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String commandURL = request.getRequestURI()
-                .replaceAll(".*" + FRONT_CONTROLLER_SERVLET, "")//localhost:9999/laptopServlet/getByRam/16
-                .replaceAll("\\d+", "");// getByRam/16
 
-        Command command = COMMANDS_MAP.get(commandURL);//FindByRamNewCommand
+        String requestURI = request.getRequestURI(); // /laptopServlet/getByRam
+
+        String commandURL = requestURI.substring(requestURI.lastIndexOf("/") + 1); // getByRam
+
+        Command command = COMMANDS_MAP.get(commandURL); // FindByRamCommand
 
         command.process(request, response);
     }

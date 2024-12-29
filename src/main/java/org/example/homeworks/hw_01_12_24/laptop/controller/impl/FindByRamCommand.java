@@ -12,6 +12,9 @@ import java.io.PrintWriter;
 
 import static org.example.homeworks.hw_01_12_24.laptop.util.ConstantsUtil.RAM_CAPACITY_JAVA;
 
+
+//http://localhost:9999/laptopServlet/getByRam?ramCapacity=16
+//++
 public class FindByRamCommand implements Command {
 
     private static LaptopService<LaptopDocument, ObjectId> LAPTOP_SERVICE;
